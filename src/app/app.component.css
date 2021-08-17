@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+
+.largeModal .modal-dialog {
+    max-width: 1500px;
+}
+
+.mediumModal .modal-dialog {
+    max-width: 1000px;
+}
+
+.smallModal .modal-dialog {
+    max-width: 800px;
+}
+
+.printingModal .modal-dialog {
+    max-width: 1250px;
+}
+
+.alertModal .modal-dialog {
+    max-width: 500px;
+}
+
+.btn {
+    border-radius: 5px;
+    border-color: gray !important;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #afcde3 !important;
+    -webkit-border-radius: 5px !important;
+    border-radius: 10px !important;
+}
+
+body {
+    background: white !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.custom-file-upload {
+    border: 1px solid #5ab95d;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.custom-file-upload-2 {
+    border: 1px solid #fada41;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}

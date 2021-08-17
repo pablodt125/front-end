@@ -1,14 +1,73 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>FrontEnd</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+
+    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AppPerson</title>
+    <base href="/">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="favicon_.ico" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/fonts/feather/style.min.css" rel="stylesheet" />
+    <link href="assets/fonts/simple-line-icons/style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900|Montserrat:300,400,500,600,700,800,900" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="assets/vendor/pace/themes/black/pace-theme-flash.css" />
+
+    <style type="text/css">
+        .pace .pace-activity {
+            top: 19px;
+            right: 19px;
+            display: none;
+        }
+        
+        .page-loading {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+            background: rgba(51, 51, 51, 1);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            z-index: -1;
+        }
+        
+        .loading-icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 38px;
+            height: 38px;
+            margin-left: -19px;
+            margin-top: -19px;
+        }
+        
+        app-root:empty~.page-loading {
+            opacity: 1;
+            z-index: 1;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
-  <app-root></app-root>
+    <app-root></app-root>
+    <div class="page-loading">
+        <img src="assets/img/oval.svg" class="loading-icon" />
+    </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+<script async defer type="text / javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChTQQ144vAXf9xq1W1nRcfuXbOre3YAKI"> </script>
+<script src="https://cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+
 </html>

@@ -1,0 +1,26 @@
+.mainContainer {
+    padding: 20px;
+}
+
+Button {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    font-weight: 100;
+}
+
+.buttonActualizar:hover {
+    color: white !important;
+}
+
+.buttonCrear {
+    color: white !important;
+}
+
+input[type="file"] {
+    display: none;
+}

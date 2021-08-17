@@ -1,0 +1,99 @@
+// center vertically and/or horizontally an absolute positioned element
+
+@mixin center($xy:xy) {
+  @if $xy == xy {
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+		transform: translate(-50%, -50%);
+  }
+  @else if $xy == x {
+    left: 50%;
+    right: auto;
+    -ms-transform: translateX(-50%); /* IE 9 */
+		-webkit-transform: translateX(-50%); /* Safari 3-8 */
+		transform: translateX(-50%);
+  }
+  @else if $xy == y {
+    top: 50%;
+    bottom: auto;
+    -ms-transform: translateY(-50%); /* IE 9 */
+		-webkit-transform: translateY(-50%); /* Safari 3-8 */
+		transform: translateY(-50%);
+  }
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@function calculateEm(
+    $size,
+    $currentSize: 16px, // relative em size
+) {
+    $remSize: $size / $currentSize;
+    @return #{$remSize}em;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin hide-visually($toggle: "hide") {
+  @if not index("hide" "unhide", $toggle) {
+    @error "`#{$toggle}` is not a valid value for the `$toggle` argument in " +
+           "the `hide-visually` mixin. Must be either `hide` or `unhide`.";
+  } @else if $toggle == "hide" {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  } @else if $toggle == "unhide" {
+    clip: auto;
+    clip-path: none;
+    height: auto;
+    overflow: visible;
+    position: static;
+    white-space: inherit;
+    width: auto;
+  }
+}
+
+// border radius
+
+@mixin border-radius($radius:.25em) {
+  border-radius: $radius;
+}
+
+@mixin button-primary {
+  position: relative;
+  @include button-variant(#fff, map-get($theme-colors, primary), map-get($theme-colors, primary));
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 2px;
+    width: 0px;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+      background: darken(map-get($theme-colors, primary), 30%);
+      ;
+    }
+  }
+}

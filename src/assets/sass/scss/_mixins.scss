@@ -1,0 +1,25 @@
+@import "mixins/utilities";
+@import "mixins/typography";
+@import "mixins/type";
+@import "mixins/buttons";
+@import "mixins/shadows";
+@import "mixins/chartist";
+@import "mixins/vendor-prefixes";
+@import "mixins/gradient";
+
+$parentSize: $font-size-root;
+@function calculateRem($size) {
+    $remSize: $size / $parentSize;
+    @return #{$remSize}rem;
+}
+
+// + Handling Long Words
+// -------
+@mixin handling-long-words {
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}

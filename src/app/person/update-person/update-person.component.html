@@ -1,0 +1,69 @@
+<div class="mainContainer">
+    <div class="modal-header">
+        <h4>Actualizar a {{personInfo.fullName}}</h4>
+        <button type="button" class="close" (click)="closeWindow()" style="background-color: red;color: white;" arial-label="Close"><span
+        aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <section id="regestration">
+        <div class="card-block">
+            <form (ngSubmit)="passBack()" #creationpersonInfo="ngForm">
+                <ul class="list-group">
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Ingrese el nombre de la persona(*):</label>
+                            <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.personInfo.fullName" #name="ngModel" placeholder="Nombre de la persona" minlength="1" maxlength="20" required>
+                        </li>
+                    </div>
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Ingrese la cedula de la persona(*):</label>
+                            <input type="text" class="form-control" name="identification" id="identification" [(ngModel)]="this.personInfo.identification" #identification="ngModel" placeholder="Cedula" minlength="1" maxlength="12" required>
+                        </li>
+                    </div>
+
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Ingrese el correo de la persona(*):</label>
+                            <input type="text" class="form-control" name="email" id="email" [(ngModel)]="this.personInfo.email" #email="ngModel" placeholder="Email " minlength="1" maxlength="255" required>
+                        </li>
+                    </div>
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Seleccione el genero(*):</label>
+
+                            <select class="form-control" name="genre" [(ngModel)]="this.personInfo.gender" #genre="ngModel">
+                                    <option [value]="''">
+                                        Seleccione
+                                    </option>
+                                    <option [value]="'masculino'">
+                                        Masculino
+                                    </option>
+                                    <option [value]="'femenino'">
+                                        Femenino
+                                    </option>
+                                </select>
+                        </li>
+                    </div>
+
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label for="">Fecha de nacimiento</label>
+                            <input type="date" [(ngModel)]="personInfo.birth" class="form-control" name="receiptDate" id="receiptDate" required>
+                        </li>
+                    </div>
+
+
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-green btn-raised buttonCrear" [disabled]="!creationpersonInfo.valid" style="background-color: #1789fa !important">
+                                Actualizar persona
+                            </button>
+                        </div>
+                    </div>
+
+                </ul>
+            </form>
+        </div>
+    </section>
+</div>
