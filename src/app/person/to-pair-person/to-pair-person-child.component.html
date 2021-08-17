@@ -1,0 +1,72 @@
+<div class="mainContainer">
+
+    <div class="modal-header">
+        <h4>Asignación de Servicios</h4>
+        <button type="button" class="close" data-dismiss="activeModal" (click)="closeWindow()" style="background-color: red;color: white;" arial-label="Close"><span
+      aria-hidden="true">&times;</span>
+    </button>
+    </div>
+
+    <section id="regestration">
+
+        <div class="card-block">
+            <form (ngSubmit)="createModuleForm.form.valid" #moduleMenuForm="ngForm">
+                <ul class="list-group">
+
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>
+                Nombre de la notificación:
+              </label> {{this.easyNotificationInfo.name}}
+                        </li>
+                        <li class="list-group-item">
+                            <label>
+                Descripción de la notificación:
+              </label> {{this.easyNotificationInfo.description}}
+                        </li>
+                    </div>
+
+                    <div class="form-group">
+                        <li class="list-group-item toPair">
+                            <label>Seleccione un servicio para la notificación</label>
+                            <select placeholder="Seleccione el servicio" class="custom-select form-control" name="selectOrganizacion" [(ngModel)]="this.pairEasyNotificationOrganizacion.idOrganization.id" #easyNotificationOrganizacion="ngModel">
+                            <option [value]="null">
+                              Seleccionar
+                            </option>
+                            <option *ngFor='let organizacionTo of organizacionesToPair' [value]="organizacionTo.id">
+                              {{organizacionTo.nombre}}
+                            </option>
+                          </select>
+                            <button class="btn btn-purple btn-raised buttonAdicionar" (click)="enlazar(this.pairEasyNotificationOrganizacion.idOrganization)" [disabled]="this.pairEasyNotificationOrganizacion.idOrganization.id === null" style="background-color: #0fb3e6 !important">
+                            Adicionar servicio a la notificación  
+                          </button>
+                        </li>
+                    </div>
+
+                </ul>
+            </form>
+        </div>
+    </section>
+
+
+    <div class="dataTable accion" padding-button>
+        <li class="list-group-item">
+            <div table>
+                <h4 class="mt-2">Lista de servicios</h4>
+                <hr>
+                <div class="example-box" *ngFor="let row of rows" cdkDrag>{{row.nombre}}
+                    <button type="submit" class="btn btn-danger btn-raised button-size mt-2" (click)="desenlazar(row)">
+          <i class="fa fa-trash"></i>
+        </button>
+                </div>
+            </div>
+        </li>
+
+
+    </div>
+
+    <!-- <button class="btn btn-purple btn-raised mt-2 buttonAdicionar" (click)="guardarPosiciones()" (click)="recargarPagina()"
+  style="background-color: #0fb3e6 !important">
+    Guardar posición de easyNotifications
+  </button> -->
+</div>

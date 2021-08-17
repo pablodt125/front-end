@@ -1,0 +1,16 @@
+.mainContainer {
+    padding: 10px;
+}
+
+.buttonCrear:hover {
+    color: white !important;
+}
+
+.buttonCrear {
+    color: white !important;
+    display: inline-block;
+}
+
+input[type="file"] {
+    display: none;
+}

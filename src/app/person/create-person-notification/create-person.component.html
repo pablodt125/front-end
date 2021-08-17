@@ -1,0 +1,62 @@
+<div class="mainContainer">
+    <div class="modal-header">
+        <h4>Creación de personas</h4>
+        <button type="button" class="close" (click)="closeWindow()" style="background-color: red;color: white;" arial-label="Close"><span
+        aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <section id="regestration">
+        <div class="card-block">
+            <form (ngSubmit)="onSubmit()" #notificationEasy="ngForm">
+                <ul class="list-group">
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Ingrese el nombre de la persona</label>
+                            <input type="text" class="form-control" name="titulo" id="titulo" [(ngModel)]="this.person.fullName" #name="ngModel" placeholder="Nombre de la persona" minlength="1" maxlength="20" required>
+                        </li>
+                    </div>
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Ingrese la cedula de la persona</label>
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" [(ngModel)]="this.person.identification" #identification="ngModel" placeholder="Descripción de la persona" minlength="1" maxlength="255" required>
+                        </li>
+                    </div>
+
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Ingrese el correo de la persona</label>
+                            <input type="text" class="form-control" name="link" id="descripcion" [(ngModel)]="this.person.email" #email="ngModel" placeholder="Link de la persona" minlength="1" maxlength="255" required>
+                        </li>
+                    </div>
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label>Seleccione el genero(*):</label>
+                            <ng-select name="tipoRespuesta" [(ngModel)]="this.person.gender" required>
+                                <ng-option [value]="''">Seleccionar</ng-option>
+                                <ng-option [value]="'masculino'">Masculino</ng-option>
+                                <ng-option [value]="'femenino'">Femenino</ng-option>
+                            </ng-select>
+                        </li>
+                    </div>
+
+                    <div class="form-group">
+                        <li class="list-group-item">
+                            <label for="">Fecha de nacimiento</label>
+                            <input type="date" [(ngModel)]="person.birth" [min]="minDate2" class="form-control" name="receiptDate" id="receiptDate" required>
+                        </li>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-green btn-raised buttonCrear" [disabled]="!notificationEasy.valid" style="background-color: #5ab95d !important">
+                                Crear persona
+                            </button>
+                        </div>
+                    </div>
+
+                </ul>
+            </form>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,69 @@
+<section id="filter" class="mb-3">
+
+    <div class="row text-center" style="margin-bottom: 2%;">
+        <div class="col-12">
+            <div class="content-header">Gestión de persona generales</div>
+        </div>
+    </div>
+
+    <button type="button" class="btn mt-1 btn-green btn-raised buttonCrear" (click)="createPerson()" align-left style="background-color: #5ab95d !important"> Crear persona </button>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <ngx-datatable #table class='bootstrap tablaActividad' [rows]="listPeople" [columnMode]="'force'" [sortType]="'multi'" [reorderable]="false" [rowHeight]="'auto'" [footerHeight]="50" [summaryPosition]="'top'">
+
+
+                <ngx-datatable-column prop="fullName" [resizeable]="false">
+                    <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+                        <strong> Nombre de la persona</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column prop="identification" [resizeable]="false">
+                    <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+                        <strong> Identificacion</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column prop="email" [resizeable]="false">
+                    <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+                        <strong> Email</strong>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column prop="birth">
+                    <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
+                        <strong>Fecha nacimiento</strong>
+                    </ng-template>
+                    <ng-template class="accion" let-row="row" ngx-datatable-cell-template>
+                        {{row.fechaCreacion | date : 'longDate'}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column name="Acciones" [resizeable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <strong>Acciones</strong>
+                    </ng-template>
+
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+
+                        <button type="submit" class="btn btn-green btn-raised button-size margin-right" (click)="verPerfil(row)">
+                            <i class="fa fa-search"></i>
+                        </button>
+
+                        <button type="submit" class="btn btn-blue btn-raised button-size margin-right" (click)="updatePerson(row)">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button type="submit" class="btn btn-orange btn-raised button-size margin-right" (click)="toPairChild(row)">
+                            <i class="fa fa-plug"></i>
+                        </button>
+                        <button type="submit" class="btn btn-danger btn-raised button-size " (click)="adDeletePerson(row)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </ng-template>
+                </ngx-datatable-column>
+
+            </ngx-datatable>
+        </div>
+    </div>
+</section>
