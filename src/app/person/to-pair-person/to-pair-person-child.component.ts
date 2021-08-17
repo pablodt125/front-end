@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CrudServiceService } from 'src/app/shared/cruds/crud-service.service';
 import { InfoMessagesService } from 'src/app/shared/messages/info-messages.service';
+import { RespuestaDto } from 'src/models/response/respuesta-dto';
 
 @Component({
   selector: 'app-to-pair-children',
@@ -17,6 +18,8 @@ export class ToPairPersonComponent implements OnInit {
   temp: string[];
   pairChildByParent = new ChildByParentModel();
   childToPair: Array<PersonModel> = new Array();
+  childLinked:Array<PersonModel>=Array();
+  childInfo:PersonModel=new PersonModel();
 
   columns = [
     { prop: 'organizacion' },
@@ -33,7 +36,52 @@ export class ToPairPersonComponent implements OnInit {
       ) { }
 
   ngOnInit() {
-    
+    if (this.personInfo.gender=='femenino') {
+      this.listByMother
+    }else this.listByFather;
+
+      
+  }
+
+  listByFather(){
+    this.crudServices.getModel("/api/persons/list-father?person="+this.personInfo.id).toPromise().then((response:RespuestaDto)=>{
+      if (response.estado==200) {
+        this.childToPair=response.objeto_respuesta as Array<PersonModel>
+      }else if (response.estado=400) {
+        this.messageService.getInfoMessagePersonalized("warning","Error","No se pudo listar las personas")
+      }
+    })
+  }
+  listByMother(){
+    this.crudServices.getModel("/api/persons/list-mother?person="+this.personInfo.id).toPromise().then((response:RespuestaDto)=>{
+      if (response.estado==200) {
+        this.childToPair=response.objeto_respuesta as Array<PersonModel>
+      }else if (response.estado=400) {
+        this.messageService.getInfoMessagePersonalized("warning","Error","No se pudo listar las personas")
+      }
+    })
+  }
+
+  listChildParent(){
+    this.crudServices.getModel("/api/persons/list-child-parent?person="+this.personInfo.id).toPromise().then((response:RespuestaDto)=>{
+      if (response.estado==200) {
+        this.childLinked=response.objeto_respuesta as Array<PersonModel>
+      }else if (response.estado=400) {
+        this.messageService.getInfoMessagePersonalized("warning","Error","No se pudo listar las personas")
+      }
+    })
+  }
+
+  linkParentChild(){
+    this.crudServices.createParam("/api/persons/create-link?idParent="+this.personInfo.id+"&idChild="+this.childInfo.id+"&gender="+this.personInfo.gender).toPromise().then((response:RespuestaDto)=>{
+      if (response.estado==200) {
+        let person=this.childToPair.filter(e=>this.childInfo.id==e.id)
+        this.childToPair.splice(this.childToPair.indexOf(person[0]),1);
+        this.childLinked.push(person[0])
+      }
+    }).catch(e=>{
+      this.messageService.getInfoMessageError();
+    })
   }
 
   
