@@ -33,7 +33,7 @@ export class UpdatePersonComponent implements OnInit {
   
 
   passBack() {
-    this.crudService.createModel('api/easy-notification/actualizar', this.personInfo).toPromise().then((respuesta: RespuestaDto) => {
+    this.crudService.putModel('api/persons/update', this.personInfo).toPromise().then((respuesta: RespuestaDto) => {
       if (respuesta.estado === 200) {
         this.messageService.getInfoMessageUpdate().then(() => {
           

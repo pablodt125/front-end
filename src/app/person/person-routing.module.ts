@@ -1,5 +1,5 @@
+import { DeatailPersonComponent } from './detail-person/detail-person.component';
 import { ToPairPersonComponent } from './to-pair-person/to-pair-person-child.component';
-import { DeatailPersonComponent } from './detail-person/detail-personcomponent';
 import { UpdatePersonComponent } from './update-person/update-person.component';
 import { CreatePersonComponent } from './create-person-notification/create-person.component';
 import { ListPersonComponent } from './list-person/list-person.component';

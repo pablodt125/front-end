@@ -31,7 +31,7 @@ export class CreatePersonComponent implements OnInit{
     }
 
     onSubmit(){
-        this.crudServiceService.createFile('/api/persons/create',this.person).toPromise().then((respuesta:RespuestaDto)=>{
+        this.crudServiceService.createModel('/api/persons/create',this.person).toPromise().then((respuesta:RespuestaDto)=>{
             if (respuesta.estado==200){
                 this.messageServices.getInfoMessageCreate().then(()=>{
                     this.person= respuesta.objeto_respuesta as PersonModel

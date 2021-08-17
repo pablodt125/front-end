@@ -2,11 +2,13 @@
 
     <div class="row text-center" style="margin-bottom: 2%;">
         <div class="col-12">
-            <div class="content-header">Gestión de persona generales</div>
+            <div class="content-header">
+                <h1>Gestión de personas</h1>
+            </div>
         </div>
     </div>
 
-    <button type="button" class="btn mt-1 btn-green btn-raised buttonCrear" (click)="createPerson()" align-left style="background-color: #5ab95d !important"> Crear persona </button>
+    <button type="button" class="btn mt-1 btn-green btn-raised buttonCrear my-4" (click)="createPerson()" align-left style="background-color: #5ab95d !important; color: #fff;"> Crear persona </button>
 
     <div class="row">
         <div class="col-sm-12">
@@ -35,9 +37,6 @@
                     <ng-template let-column="column" ngx-datatable-header-template let-sort="sortFn">
                         <strong>Fecha nacimiento</strong>
                     </ng-template>
-                    <ng-template class="accion" let-row="row" ngx-datatable-cell-template>
-                        {{row.fechaCreacion | date : 'longDate'}}
-                    </ng-template>
                 </ngx-datatable-column>
 
                 <ngx-datatable-column name="Acciones" [resizeable]="false">
@@ -47,14 +46,14 @@
 
                     <ng-template let-row="row" ngx-datatable-cell-template>
 
-                        <button type="submit" class="btn btn-green btn-raised button-size margin-right" (click)="verPerfil(row)">
+                        <button type="submit" class="btn btn-green btn-raised button-size margin-right" (click)="verPerfil(row)" style="background-color: #5ab95d;color: #fff;">
                             <i class="fa fa-search"></i>
                         </button>
 
-                        <button type="submit" class="btn btn-blue btn-raised button-size margin-right" (click)="updatePerson(row)">
+                        <button type="submit" class="btn btn-blue btn-raised button-size margin-right" (click)="updatePerson(row)" style="background-color: #1789fa;color: #fff;">
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <button type="submit" class="btn btn-orange btn-raised button-size margin-right" (click)="toPairChild(row)">
+                        <button type="submit" class="btn btn-orange btn-raised button-size margin-right" (click)="toPairChild(row)" style="background-color: #fada41;color: #fff;">
                             <i class="fa fa-plug"></i>
                         </button>
                         <button type="submit" class="btn btn-danger btn-raised button-size " (click)="adDeletePerson(row)">

@@ -37,10 +37,10 @@ export class ToPairPersonComponent implements OnInit {
 
   ngOnInit() {
     if (this.personInfo.gender=='femenino') {
-      this.listByMother
-    }else this.listByFather;
-
-      
+      this.listByMother()
+    }else this.listByFather();
+    
+    this.listChildParent();
   }
 
   listByFather(){
@@ -66,6 +66,7 @@ export class ToPairPersonComponent implements OnInit {
     this.crudServices.getModel("/api/persons/list-child-parent?person="+this.personInfo.id).toPromise().then((response:RespuestaDto)=>{
       if (response.estado==200) {
         this.childLinked=response.objeto_respuesta as Array<PersonModel>
+        
       }else if (response.estado=400) {
         this.messageService.getInfoMessagePersonalized("warning","Error","No se pudo listar las personas")
       }
@@ -78,6 +79,18 @@ export class ToPairPersonComponent implements OnInit {
         let person=this.childToPair.filter(e=>this.childInfo.id==e.id)
         this.childToPair.splice(this.childToPair.indexOf(person[0]),1);
         this.childLinked.push(person[0])
+      }
+    }).catch(e=>{
+      this.messageService.getInfoMessageError();
+    })
+  }
+
+  deleteLink(child){
+    this.crudServices.deleteModel("/api/persons/delete-linked/"+child+"/"+this.personInfo.id).toPromise().then((response:RespuestaDto)=>{
+      if (response.estado==200) {
+        let person=this.childLinked.filter(e=>e.id==child);
+        this.childLinked.splice(this.childLinked.indexOf(person[0]),1);
+        this.childToPair.push(person[0]);
       }
     }).catch(e=>{
       this.messageService.getInfoMessageError();

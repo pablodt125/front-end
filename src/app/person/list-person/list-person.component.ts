@@ -42,7 +42,7 @@ export class ListPersonComponent implements OnInit {
   }
 
   listarPersons() {
-    this.crudServices.getModel('api/easy-notification/ver-todos').toPromise().then((respuesta: RespuestaDto) => {
+    this.crudServices.getModel('/api/persons/list').toPromise().then((respuesta: RespuestaDto) => {
       if (respuesta.estado === 200) {
         this.listPeople = respuesta.objeto_respuesta as Array<PersonModel>;
         
@@ -85,7 +85,7 @@ export class ListPersonComponent implements OnInit {
   }
 
   deletePerson(personInfo: PersonModel) {
-    let url = 'api/easy-notification/eliminar?id=';
+    let url = '/api/persons/delete/';
     this.crudServices.deleteModel(url + personInfo.id).toPromise().then((respuesta: RespuestaDto) => {
       if (respuesta.estado === 200) {
         this.messageService.getInfoMessageDelete().then(() => {
@@ -107,7 +107,7 @@ export class ListPersonComponent implements OnInit {
 
   adDeletePerson(personInfo: PersonModel) {
     swal({
-      title: '¿Está seguro que desea eliminar la notificación?',
+      title: '¿Está seguro que desea eliminar la persona?',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',

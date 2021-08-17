@@ -1,7 +1,7 @@
 <div class="mainContainer">
 
     <div class="modal-header">
-        <h4>Asignación de Servicios</h4>
+        <h4>Asignación de hijos</h4>
         <button type="button" class="close" data-dismiss="activeModal" (click)="closeWindow()" style="background-color: red;color: white;" arial-label="Close"><span
       aria-hidden="true">&times;</span>
     </button>
@@ -14,11 +14,18 @@
                 <ul class="list-group">
 
                     <div class="form-group">
-                        <li class="list-group-item">
+                        <li *ngIf="personInfo.gender=='masculino';else elseBlock" class="list-group-item">
                             <label>
-                Nombre de la persona:
-              </label> {{this.personInfo.fullName}}
+                            Nombre del padre:
+                          </label> {{this.personInfo.fullName}}
                         </li>
+                        <ng-template #elseBlock>
+                            <li class="list-group-item">
+                                <label>
+                            Nombre de la madre:
+                          </label> {{this.personInfo.fullName}}
+                            </li>
+                        </ng-template>
                         <li class="list-group-item">
                             <label>
                 Email de la persona:
@@ -37,7 +44,7 @@
                               {{childTo.fullName}}
                             </option>
                           </select>
-                            <button class="btn btn-purple btn-raised buttonAdicionar" (click)="enlazar(this.pairEasyNotificationOrganizacion.idOrganization)" [disabled]="this.pairChildByParent.child.id === null" style="background-color: #0fb3e6 !important">
+                            <button class="btn btn-purple btn-raised buttonAdicionar" (click)="linkParentChild()" [disabled]="this.pairChildByParent.child.id === null" style="background-color: #0fb3e6 !important;color: #fff;">
                             Adicionar hijo a la persona  
                           </button>
                         </li>
@@ -54,8 +61,8 @@
             <div table>
                 <h4 class="mt-2">Hijos</h4>
                 <hr>
-                <div class="example-box" *ngFor="let row of rows">{{row.nombre}}
-                    <button type="submit" class="btn btn-danger btn-raised button-size mt-2" (click)="desenlazar(row)">
+                <div class="example-box" *ngFor="let row of childLinked">{{row.fullName}}
+                    <button type="submit" class="btn btn-danger btn-raised button-size mt-2" (click)="deleteLink(row.id)">
                       <i class="fa fa-trash"></i>
                     </button>
                 </div>

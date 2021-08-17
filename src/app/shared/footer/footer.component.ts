@@ -1,12 +1,17 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-footer',
-    templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.scss']
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.css']
 })
+export class FooterComponent implements OnInit {
+  
+  public autor:any={nombre:'Juan Pablo',apellido:'Florez'}
 
-export class FooterComponent{
-    //Variables
-    currentDate : Date = new Date();
+  constructor() { }
+
+  ngOnInit() {
+  }
+
 }
