@@ -79,6 +79,7 @@ export class ToPairPersonComponent implements OnInit {
         let person=this.childToPair.filter(e=>this.childInfo.id==e.id)
         this.childToPair.splice(this.childToPair.indexOf(person[0]),1);
         this.childLinked.push(person[0])
+        
       }
     }).catch(e=>{
       this.messageService.getInfoMessageError();
@@ -91,6 +92,7 @@ export class ToPairPersonComponent implements OnInit {
         let person=this.childLinked.filter(e=>e.id==child);
         this.childLinked.splice(this.childLinked.indexOf(person[0]),1);
         this.childToPair.push(person[0]);
+        
       }
     }).catch(e=>{
       this.messageService.getInfoMessageError();
