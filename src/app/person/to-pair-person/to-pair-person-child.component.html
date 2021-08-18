@@ -10,7 +10,7 @@
     <section id="regestration">
 
         <div class="card-block">
-            <form (ngSubmit)="createModuleForm.form.valid" #moduleMenuForm="ngForm">
+            <form #moduleMenuForm="ngForm">
                 <ul class="list-group">
 
                     <div class="form-group">
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <li class="list-group-item toPair">
                             <label>Seleccione un hijo de {{personInfo.fullName}}</label>
-                            <select placeholder="Seleccione el servicio" class="custom-select form-control" name="selectOrganizacion" [(ngModel)]="this.pairChildByParent.child.id" #easyNotificationOrganizacion="ngModel">
+                            <select placeholder="Seleccione el servicio" class="custom-select form-control" name="selectOrganizacion" [(ngModel)]="this.childInfo.id" #easyNotificationOrganizacion="ngModel">
                             <option [value]="null">
                               Seleccionar
                             </option>
@@ -44,7 +44,7 @@
                               {{childTo.fullName}}
                             </option>
                           </select>
-                            <button class="btn btn-purple btn-raised buttonAdicionar" (click)="linkParentChild()" [disabled]="this.pairChildByParent.child.id === null" style="background-color: #0fb3e6 !important;color: #fff;">
+                            <button class="btn btn-purple btn-raised buttonAdicionar" (click)="linkParentChild()" [disabled]="this.childInfo.id === null" style="background-color: #0fb3e6 !important;color: #fff;">
                             Adicionar hijo a la persona  
                           </button>
                         </li>
